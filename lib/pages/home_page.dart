@@ -1,3 +1,4 @@
+import 'package:codigo6_shared/utils/sp_global.dart';
 import 'package:codigo6_shared/widgets/my_drawer_widgets.dart';
 import 'package:flutter/services.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -17,13 +18,17 @@ class _HomePageState extends State<HomePage> {
   final TextEditingController _emailController = TextEditingController();
 
   save() async {
-    SharedPreferences mandarina = await SharedPreferences.getInstance();
-    //Primer parametro = key o llave
-    //Segundo parametro = valor amarrado a la llave
-    mandarina.setString("name", _nameController.value.text);
-    mandarina.setString("address", _addressController.value.text);
-    mandarina.setString("email", _emailController.value.text);
-    //mandarina.setInt("age", 30);
+    // SharedPreferences mandarina = await SharedPreferences.getInstance();
+    // //Primer parametro = key o llave
+    // //Segundo parametro = valor amarrado a la llave
+    // mandarina.setString("name", _nameController.value.text);
+    // mandarina.setString("address", _addressController.value.text);
+    // mandarina.setString("email", _emailController.value.text);
+
+    SPGlobal().name = _nameController.value.text;
+    SPGlobal().address = _addressController.value.text;
+    SPGlobal().email = _emailController.value.text;
+
     print("Guardando ... ${_nameController.value.text}");
   }
 

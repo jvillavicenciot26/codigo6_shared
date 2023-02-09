@@ -1,33 +1,15 @@
+import 'package:codigo6_shared/utils/sp_global.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-class ProfilePage extends StatefulWidget {
-  @override
-  State<ProfilePage> createState() => _ProfilePageState();
-}
-
-class _ProfilePageState extends State<ProfilePage> {
+class ProfilePage extends StatelessWidget {
   String name = "";
+
   String address = "";
+
   String email = "";
 
-  @override
-  void initState() {
-    super.initState();
-    getData();
-  }
-
-  getData() async {
-    SharedPreferences prueba = await SharedPreferences.getInstance();
-    name = prueba.getString("name") ?? "No guardo nombre";
-    name = name.isEmpty ? "No guardo nombre" : name;
-    address = prueba.getString("address") ?? "No guardo direccion";
-    address = address.isEmpty ? "No guardo direccion" : address;
-    email = prueba.getString("email") ?? "No guardo email";
-    email = email.isEmpty ? "No guardo email" : email;
-    setState(() {});
-  }
-
+  //getData() async {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -52,7 +34,7 @@ class _ProfilePageState extends State<ProfilePage> {
               ),
               Divider(),
               Text(
-                name,
+                SPGlobal().name,
                 style: TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.w500,
@@ -70,7 +52,7 @@ class _ProfilePageState extends State<ProfilePage> {
                 height: 20,
               ),
               Text(
-                address,
+                SPGlobal().address,
                 style: TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.w500,
@@ -88,7 +70,7 @@ class _ProfilePageState extends State<ProfilePage> {
                 height: 20,
               ),
               Text(
-                email,
+                SPGlobal().email,
                 style: TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.w500,
